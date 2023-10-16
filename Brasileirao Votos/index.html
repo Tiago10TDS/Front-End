@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var times = ["Flamengo", "São Paulo", "Palmeiras", "Grêmio", "Corinthians"];
+
+        var votos = {};
+
+        for (var i = 0; i < times.length; i++) {
+            var voto = prompt("Vote no seu time favorito (Digite o número correspondente):\n" + "1. Flamengo\n2. São Paulo\n3. Palmeiras\n4. Grêmio\n5. Corinthians");
+
+            var votoInt = parseInt(voto);
+            if (!isNaN(votoInt) && votoInt >= 1 && votoInt <= 5) {
+
+                var timeVotado = times[votoInt - 1];
+                if (!votos[timeVotado]) {
+                    votos[timeVotado] = 0;
+                }
+                votos[timeVotado]++;
+            } else {
+                alert("Voto inválido. Por favor, vote de 1 a 5.");
+                i--;
+            }
+        }
+
+        var vencedor = null;
+        var maiorNumeroDeVotos = 0;
+
+        for (var time in votos) {
+            if (votos[time] > maiorNumeroDeVotos) {
+                vencedor = time;
+                maiorNumeroDeVotos = votos[time];
+            }
+        }
+
+        alert("O time vencedor é: " + vencedor + " com " + maiorNumeroDeVotos + " votos!");
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
